@@ -7,17 +7,22 @@ const Container = styled.div`
   .display {
     display: flex;
   }
+  .margin {
+    margin-right: 10px;
+  }
 `
 
-export default function ChatRow() {
+export default function ChatRow({ name, messageInfo }) {
+  const { message, date, time } = messageInfo;
+
   return (
     <Container>
       <div className="display">
-        <div>name</div>
-        <div>date</div>
-        <div>time</div>
+        <div className="margin">{name}</div>
+        <div className="margin">{date}</div>
+        <div>{`${time}:00`}</div>
       </div>
-      <div>full message</div>
+      <div>{message}</div>
     </Container>
   );
 }

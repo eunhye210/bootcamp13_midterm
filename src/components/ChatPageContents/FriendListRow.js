@@ -1,5 +1,6 @@
 import styled from "styled-components";
-import person from "../../person.png";
+import { useDispatch } from "react-redux";
+import { setChatFriendName } from "../../store/sllices/friendSlice";
 
 const Container = styled.div`
   width: 700px;
@@ -9,19 +10,25 @@ const Container = styled.div`
     display: flex;
   }
   .img {
-    width: 50px;
+    width: 90px;
     height: 50px;
   }
 `
 
-export default function FriendListRow({ setShowChatPage }) {
+export default function FriendListRow({ chat, setShowChatPage }) {
+  const dispatch = useDispatch();
+  const [name, img, messageList] = chat;
 
+  function showChatPage() {
+    dispatch(setChatFriendName(name));
+    setShowChatPage(true);
+  }
   return (
     <Container>
       <div className="content">
-        <img className="img" alt="person_img" src={person} />
-        <div>name</div>
-        <button onClick={() => setShowChatPage(true)}>대화하기</button>
+        <img className="img" alt="person_img" src={`/img/${img}.png`} />
+        <div>{name}</div>
+        <button onClick={showChatPage}>대화하기</button>
       </div>
     </Container>
   );
