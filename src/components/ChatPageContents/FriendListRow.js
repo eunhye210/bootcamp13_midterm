@@ -15,9 +15,9 @@ const Container = styled.div`
   }
 `
 
-export default function FriendListRow({ chat, setShowChatPage }) {
+export default function FriendListRow({ info, setShowChatPage }) {
   const dispatch = useDispatch();
-  const [name, img, messageList] = chat;
+  const [name, img] = info;
 
   function showChatPage() {
     dispatch(setChatFriendName(name));

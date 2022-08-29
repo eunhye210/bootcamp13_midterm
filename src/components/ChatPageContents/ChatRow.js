@@ -13,12 +13,12 @@ const Container = styled.div`
 `
 
 export default function ChatRow({ name, messageInfo }) {
-  const { message, date, time } = messageInfo;
+  const { message, date, time, username } = messageInfo;
 
   return (
     <Container>
       <div className="display">
-        <div className="margin">{name}</div>
+        <div className="margin">{username}</div>
         <div className="margin">{date}</div>
         <div>{`${time}:00`}</div>
       </div>

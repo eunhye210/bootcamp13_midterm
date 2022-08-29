@@ -18,11 +18,11 @@ export default function FriendList({ setShowChatPage }) {
 
   function searchByName() {
     // 수정 필요 !
-    // for (const item of chats) {
-    //   if (item[0] === name) {
-    //     setChats(item);
-    //   }
-    // }
+  }
+
+  const friendInfoList = [];
+  for (const [key, value] of Object.entries(chats)) {
+    friendInfoList.push([key, value.img]);
   }
 
   return (
@@ -42,8 +42,8 @@ export default function FriendList({ setShowChatPage }) {
         <option value="descending">내림차순</option>
       </select>
       <div className="rows">
-        {chats.map((chat) =>
-          <FriendListRow key={chat[0]} chat={chat} setShowChatPage={setShowChatPage} />
+        {friendInfoList.map((info) =>
+          <FriendListRow key={info} info={info} setShowChatPage={setShowChatPage} />
         )}
       </div>
     </Container>
