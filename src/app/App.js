@@ -8,6 +8,7 @@ import { app } from "../firebase";
 import { getDatabase, ref, onValue } from "firebase/database";
 import { addChat } from "../store/sllices/chatSlice";
 import styled from "styled-components";
+import Header from "../components/Header";
 
 const Container = styled.div`
   position: fixed;
@@ -26,6 +27,8 @@ const Container = styled.div`
 function App() {
   const dispatch = useDispatch();
   const [showChatPage, setShowChatPage] = useState(false);
+  const [name, setName] = useState("");
+  const [singleFriendInfoList, setSingleFriendInfoList] = useState("");
 
   const db = getDatabase(app);
   const messages = ref(db, "/chatting");
@@ -47,10 +50,21 @@ function App() {
   return (
     <Container>
       {!showChatPage &&
-        <Routes>
-          <Route path="/" element={<FriendList setShowChatPage={setShowChatPage} />} />
-          <Route path="/chats" element={<ChatList setShowChatPage={setShowChatPage}/>} />
-        </Routes>
+        <div>
+          <Header setName={setName} setSingleFriendInfoList={setSingleFriendInfoList} />
+          <Routes>
+            <Route path="/" element={
+              <FriendList
+                name={name}
+                setName={setName}
+                setShowChatPage={setShowChatPage}
+                singleFriendInfoList={singleFriendInfoList}
+                setSingleFriendInfoList={setSingleFriendInfoList}
+              />}
+            />
+            <Route path="/chats" element={<ChatList setShowChatPage={setShowChatPage}/>} />
+          </Routes>
+        </div>
       }
       {showChatPage && <ChatPage setShowChatPage={setShowChatPage} />}
     </Container>

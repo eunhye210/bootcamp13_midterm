@@ -1,29 +1,12 @@
-import styled from "styled-components";
 import { useDispatch } from "react-redux";
 import { setChatFriendName } from "../../store/sllices/friendSlice";
+import { Container } from "./RowStyledComponents";
 
-const Container = styled.div`
-  width: 700px;
-  height: 70px;
-  border: 1px solid;
-  .content {
-    display: flex;
-  }
-  .img {
-    width: 90px;
-    height: 50px;
-  }
-  .text {
-    max-width: 30ch;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: nowrap;
-  }
-`
 
 export default function ChatListRow({ chat, setShowChatPage }) {
   const dispatch = useDispatch();
-  const [name, img, messageList] = chat;
+  const [name, personInfo] = chat;
+  const {img, messages} = personInfo;
 
   function showChatPage() {
     dispatch(setChatFriendName(name));
@@ -33,15 +16,15 @@ export default function ChatListRow({ chat, setShowChatPage }) {
   return (
     <Container>
       <div className="content">
-        <img className="img" alt="person_img" src={`/img/${img}.png`} />
-        <div className="content">
-          <div>
+        <div className="chatlist-display">
+          <img className="img" alt="person_img" src={img} />
+          <div className="chatlist-display">
             <div>{name}</div>
-            <div className="text">{messageList[messageList.length - 1].message}</div>
+            <div className="chatlist-text">{messages[messages.length - 1].message}</div>
+            <div className="chatlist-date">{messages[messages.length - 1].date}</div>
           </div>
-          <div>{messageList[messageList.length - 1].date}</div>
         </div>
-        <button onClick={showChatPage}>대화하기</button>
+        <button className="info-button" onClick={showChatPage}>Chat</button>
       </div>
     </Container>
   );

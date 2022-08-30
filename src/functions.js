@@ -11,3 +11,24 @@ export function getTodayDateAndTime() {
 
   return [todayDate, todayTime];
 }
+
+export function getRecentTimeStampList(chats) {
+  const dateList = [];
+
+  for (const [key, value] of Object.entries(chats)) {
+    const messages = value.messages;
+    const date = messages[messages.length - 1].date;
+    const time = messages[messages.length - 1].time;
+    const timeStamp = new Date(`${date} ${time}`);
+    dateList.push([timeStamp, key]);
+  }
+
+  dateList.sort((a, b) => {
+    if (a[0] > b[0]) {
+      return -1;
+    } else {
+      return 1;
+    }
+  })
+  return dateList;
+}

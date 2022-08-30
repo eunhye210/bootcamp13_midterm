@@ -1,8 +1,6 @@
 import FriendListRow from "./ChatPageContents/FriendListRow";
 import styled from "styled-components";
-import Header from "../components/Header";
 import { useSelector, useDispatch } from "react-redux";
-import { useState } from "react";
 import { setChat } from "../store/sllices/chatSlice";
 
 const Container = styled.div`
@@ -13,8 +11,9 @@ const Container = styled.div`
   .search {
     width: 200px;
     height: 20px;
+    margin-top: 10px;
     margin-bottom: 10px;
-    margin-left: 20px;
+    margin-left: 25px;
   }
   .search-button {
     height: 25px;
@@ -22,13 +21,18 @@ const Container = styled.div`
   }
   .select {
     height: 25px;
-    margin-right: 20px;
+    margin-top: 10px;
+    margin-right: 25px;
   }
 `
 
-export default function FriendList({ setShowChatPage }) {
-  const [name, setName] = useState("");
-  const [singleFriendInfoList, setSingleFriendInfoList] = useState("");
+export default function FriendList({
+    name,
+    setName,
+    setShowChatPage,
+    singleFriendInfoList,
+    setSingleFriendInfoList
+  }) {
   const chats = useSelector(state => state.chat);
   const dispatch = useDispatch();
 
@@ -62,7 +66,6 @@ export default function FriendList({ setShowChatPage }) {
 
   return (
     <Container>
-      <Header setName={setName} setSingleFriendInfoList={setSingleFriendInfoList}/>
       <div className="search-display">
         <div>
           <input

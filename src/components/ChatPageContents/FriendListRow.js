@@ -1,19 +1,6 @@
-import styled from "styled-components";
 import { useDispatch } from "react-redux";
 import { setChatFriendName } from "../../store/sllices/friendSlice";
-
-const Container = styled.div`
-  width: 600px;
-  height: 40px;
-  border: 1px solid;
-  .content {
-    display: flex;
-  }
-  .img {
-    width: 30px;
-    height: 30px;
-  }
-`
+import { Container } from "./RowStyledComponents";
 
 export default function FriendListRow({ info, setShowChatPage }) {
   const dispatch = useDispatch();
@@ -26,9 +13,11 @@ export default function FriendListRow({ info, setShowChatPage }) {
   return (
     <Container>
       <div className="content">
-        <img className="img" alt="person_img" src={value.img}/>
-        <div>{name}</div>
-        <button onClick={showChatPage}>대화하기</button>
+        <div className="person-info">
+          <img className="img" alt="person_img" src={value.img}/>
+          <div className="info-font">{name}</div>
+        </div>
+        <button className="info-button" onClick={showChatPage}>Chat</button>
       </div>
     </Container>
   );

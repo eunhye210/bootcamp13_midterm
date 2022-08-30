@@ -5,12 +5,48 @@ import { useState } from "react";
 import { getDatabase, ref, set } from "firebase/database";
 import { app } from "../firebase";
 import { getTodayDateAndTime } from "../functions"
+import { BiUndo } from "react-icons/bi";
 
 
 const Container = styled.div`
-  width: 500px;
-  height: 600px;
-  border: 1px solid;
+  width: 650px;
+  height: 750px;
+  margin-top: 23px;
+  margin-left: 23px;
+  border: 2px solid;
+  border-color: grey;
+  border-radius: 20px;
+  background-color: white;
+  .undo-button {
+    width: 70px;
+    height: 35px;
+    margin-top: 20px;
+    margin-left: 20px;
+    font-size: 30px;
+  }
+  .title {
+    font-size: 30px;
+    text-align: center;
+    margin-bottom: 50px;
+  }
+  .mid-section {
+    height: 520px;
+  }
+  .submit-section {
+    display: flex;
+    justify-content: center;
+  }
+  .submit-input {
+    width: 450px;
+    height: 40px;
+    font-size: 25px;
+  }
+  .submit-button {
+    width: 60px;
+    height: 45px;
+    font-size: 20px;
+    margin-left: 10px;
+  }
 `
 
 export default function ChatPage({ setShowChatPage }) {
@@ -36,13 +72,31 @@ export default function ChatPage({ setShowChatPage }) {
 
   return (
     <Container>
-      <button onClick={() => setShowChatPage(false)}>go back</button>
-      <div>{`${friend.value}와의 대화`}</div>
-      {chat[friend.value].messages?.map((msg) =>
-        <ChatRow key={msg.message} messageInfo={msg} />
-      )}
-      <input value={messageInput} onChange={(e) => setMessageInput(e.target.value)} />
-      <button onClick={(e) => sendMessage(e)}>send</button>
+      <div>
+        <button className="undo-button" onClick={() => setShowChatPage(false)}>
+          <BiUndo />
+        </button>
+        <div className="title">{`< ${friend.value}와의 대화 >`}</div>
+      </div>
+      <div className="mid-section">
+        {chat[friend.value].messages?.map((msg) =>
+          <ChatRow
+            key={msg.message}
+            messageInfo={msg}
+            name={msg.username}
+          />
+        )}
+      </div>
+      <div className="submit-section">
+        <input className="submit-input" value={messageInput} onChange={(e) => setMessageInput(e.target.value)} />
+        <button
+          className="submit-button"
+          onClick={(e) => sendMessage(e)}
+          disabled={!messageInput}
+        >
+          send
+        </button>
+      </div>
     </Container>
   );
 }
