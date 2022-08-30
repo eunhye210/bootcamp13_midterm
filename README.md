@@ -3,7 +3,7 @@
 **React + React Router + Redux  Toolkit + Firebase**를 복합적으로 이용해 Chat App을 만들어 보는 과제입니다.
 
 ## Netlify 배포 주소
-[netlify_url](https://cute-sprite-53dde3.netlify.app/chats)
+[netlify_url](https://dreamy-figolla-0907fe.netlify.app)
 
 ## TODO
 

@@ -30,7 +30,7 @@ export default function ChatPageRow({ messageInfo, name }) {
     <Container user={name}>
       <div className="display">
         <div>{username}</div>
-        <div className="date-time">{`${date} ,  ${time}`}</div>
+        <div className="date-time">{`${date}  ${time}`}</div>
       </div>
       <div className="display">
         <div className="text-box">{message}</div>
