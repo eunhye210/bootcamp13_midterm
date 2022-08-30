@@ -1,70 +1,33 @@
-# Getting Started with Create React App
+# Chat App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+**React + React Router + Redux  Toolkit + Firebase**를 복합적으로 이용해 Chat App을 만들어 보는 과제입니다.
 
-## Available Scripts
+## Netlify 배포 주소
+[netlify_url](https://cute-sprite-53dde3.netlify.app/chats)
 
-In the project directory, you can run:
+## TODO
 
-### `npm start`
+- [x] Firebase Realtime Database를 이용하여 실시간 채팅 기능이 구현되어야 합니다.
+- [x] 페이지 새로고침에 대한 대응은 하지 않아도 괜찮습니다.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### 친구 목록 페이지
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- [x] 채팅 목록으로 이동할 수 있는 버튼이 있어야 합니다.
+- [x] 친구 이름, 사진과 함께 채팅을 시작할 수 있는 버튼이 있어야 합니다.
+- [x] "대화하기" 버튼을 이용해 해당 친구와의 채팅 페이지로 바로 이동할 수 있습니다.
+- [x] 이름을 기준으로 오름차순 또는 내림차순 정렬할 수 있는 기능이 있어야 합니다.
+- [x] 검색창을 이용해 친구 이름을 기준으로 검색할 수 있는 기능이 있어야 합니다.
 
-### `npm test`
+### 채팅 목록 페이지
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- [x] 진행 중인 채팅이 날짜 순으로 나열되어야 합니다. (최신날짜가 상위)
+- [x] 친구 목록으로 이동할 수 있는 버튼이 있어야 합니다.
+- [x] 진행 중인 채팅의 친구 이름, 가장 최신 메시지의 첫 30글자, 가장 최신 메시지 전송 날짜가 표기되어야 합니다.
+- [x] 채팅을 선택하면 채팅 페이지로 이동합니다.
 
-### `npm run build`
+### 채팅 페이지
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- [x] 상대방과 나눈 대화가 시간 순(최근 메시지가 하위)으로 나열되어야 합니다.
+- [x] 상대발 이름, 메시지 내용, 전송 날짜 및 시간이 모두 표기되어야 합니다.
+- [x] 채팅 페이지는 별도 URL이 필요하지 않습니다.
+- [x] 채팅 페이지에서 메시지를 전송할 경우, 현재 채팅 페이지와 채팅 목록 페이지에 새로운 메시지가 반영되어야 합니다.

@@ -7,13 +7,14 @@ export function getTodayDateAndTime() {
 
   const hours = today.getHours();
   const minutes = today.getMinutes();
-  const todayTime = `${hours}:${minutes}`;
+  const todayTime = `${hours < 10 ? "0" + hours : hours}:${minutes < 10 ? "0" + minutes : minutes}`;
 
   return [todayDate, todayTime];
 }
 
-export function getRecentTimeStampList(chats) {
+export function orderChatListByTimestamp(chats) {
   const dateList = [];
+  const chatList = [];
 
   for (const [key, value] of Object.entries(chats)) {
     const messages = value.messages;
@@ -24,11 +25,11 @@ export function getRecentTimeStampList(chats) {
   }
 
   dateList.sort((a, b) => {
-    if (a[0] > b[0]) {
-      return -1;
-    } else {
-      return 1;
-    }
-  })
-  return dateList;
+    return (a[0] > b[0]) ? -1 : 1;
+  });
+
+  for (const date of dateList) {
+    chatList.push([date[1], chats[date[1]]]);
+  }
+  return chatList;
 }

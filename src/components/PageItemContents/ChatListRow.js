@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import { setChatFriendName } from "../../store/sllices/friendSlice";
+import { setFriendName } from "../../store/sllices/friendSlice";
 import { Container } from "./RowStyledComponents";
 
 
@@ -9,7 +9,7 @@ export default function ChatListRow({ chat, setShowChatPage }) {
   const {img, messages} = personInfo;
 
   function showChatPage() {
-    dispatch(setChatFriendName(name));
+    dispatch(setFriendName(name));
     setShowChatPage(true);
   }
 

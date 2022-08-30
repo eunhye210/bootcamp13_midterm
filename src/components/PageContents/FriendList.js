@@ -1,7 +1,7 @@
-import FriendListRow from "./ChatPageContents/FriendListRow";
+import FriendListRow from "../PageItemContents/FriendListRow";
 import styled from "styled-components";
 import { useSelector, useDispatch } from "react-redux";
-import { setChat } from "../store/sllices/chatSlice";
+import { setChat } from "../../store/sllices/chatSlice";
 
 const Container = styled.div`
   .search-display {
@@ -30,25 +30,30 @@ export default function FriendList({
     name,
     setName,
     setShowChatPage,
-    singleFriendInfoList,
-    setSingleFriendInfoList
+    singleFriendInfo,
+    setSingleFriendInfo,
   }) {
-  const chats = useSelector(state => state.chat);
   const dispatch = useDispatch();
+  const chats = useSelector(state => state.chat);
 
-  let allFriendsInfoList = [];
+  let everyFriendInfoList = [];
   for (const [key, value] of Object.entries(chats)) {
-    allFriendsInfoList.push([key, value]);
+    everyFriendInfoList.push([key, value]);
   }
 
   function searchByName() {
-    setSingleFriendInfoList([name, chats[name]]);
+    if (chats[name]) {
+      setSingleFriendInfo([name, chats[name]]);
+    } else {
+      alert(`${name} 이름을 가진 친구가 없습니다.`);
+      setName("");
+    }
   }
 
   function showAscOrDesc(e) {
     const newChats = {};
     const keys = Object.keys(chats).sort();
-    allFriendsInfoList = [];
+    everyFriendInfoList = [];
 
     if (e.target.value === "ascending") {
       for (const key of keys) {
@@ -83,10 +88,10 @@ export default function FriendList({
         </select>
       </div>
       <div className="rows">
-        {singleFriendInfoList ?
-          <FriendListRow info={singleFriendInfoList} setShowChatPage={setShowChatPage} />
-          : allFriendsInfoList.map((info) =>
-          <FriendListRow key={info} info={info} setShowChatPage={setShowChatPage} />)
+        {singleFriendInfo ?
+          <FriendListRow info={singleFriendInfo} setShowChatPage={setShowChatPage} />
+          : everyFriendInfoList.map((info) =>
+          <FriendListRow key={info[0]} info={info} setShowChatPage={setShowChatPage} />)
         }
       </div>
     </Container>

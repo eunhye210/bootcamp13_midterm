@@ -19,13 +19,13 @@ const Container = styled.div`
   }
 `
 
-export default function Header({ setName, setSingleFriendInfoList }) {
+export default function Header({ setName, setSingleFriendInfo }) {
   const navigate = useNavigate();
 
   function movePage(e) {
-    (e.target.value === "friends") ? navigate("/") : navigate("/chats");
+    (e.target.value === "friends") ? navigate("/friends") : navigate("/chats");
     setName("");
-    setSingleFriendInfoList("");
+    setSingleFriendInfo(null);
   }
 
   return (

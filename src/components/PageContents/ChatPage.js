@@ -1,12 +1,11 @@
 import styled from "styled-components";
-import ChatRow from "./ChatPageContents/ChatRow";
+import ChatPageRow from "../PageItemContents/ChatPageRow";
 import { useSelector } from "react-redux";
 import { useState } from "react";
-import { getDatabase, ref, set } from "firebase/database";
-import { app } from "../firebase";
-import { getTodayDateAndTime } from "../functions"
+import { ref, set } from "firebase/database";
+import { db } from "../../firebase";
+import { getTodayDateAndTime } from "../../functions"
 import { BiUndo } from "react-icons/bi";
-
 
 const Container = styled.div`
   width: 650px;
@@ -64,7 +63,6 @@ export default function ChatPage({ setShowChatPage }) {
       time: todayTime,
     };
 
-    const db = getDatabase(app);
     const numberKey = chat[friend.value].messages.length;
     set(ref(db, `chatting/${friend.value}/messages/${numberKey}`), postData);
     setMessageInput("");
@@ -79,16 +77,20 @@ export default function ChatPage({ setShowChatPage }) {
         <div className="title">{`< ${friend.value}와의 대화 >`}</div>
       </div>
       <div className="mid-section">
-        {chat[friend.value].messages?.map((msg) =>
-          <ChatRow
-            key={msg.message}
+        {chat[friend.value].messages?.map((msg, index) =>
+          <ChatPageRow
+            key={toString(msg.messages) + index}
             messageInfo={msg}
             name={msg.username}
           />
         )}
       </div>
       <div className="submit-section">
-        <input className="submit-input" value={messageInput} onChange={(e) => setMessageInput(e.target.value)} />
+        <input
+          className="submit-input"
+          value={messageInput}
+          onChange={(e) => setMessageInput(e.target.value)}
+        />
         <button
           className="submit-button"
           onClick={(e) => sendMessage(e)}
