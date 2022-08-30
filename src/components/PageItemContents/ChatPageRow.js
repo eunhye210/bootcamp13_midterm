@@ -11,6 +11,8 @@ const Container = styled.div`
     color: grey;
   }
   .text-box {
+    display: flex;
+    justify-content: ${props => (props.user  === "eunhye") ? "end" : "start"};
     height: 20px;
     padding: 5px;
     padding-left: 20px;
@@ -18,8 +20,6 @@ const Container = styled.div`
     border-radius: 20px;
     background-color: ${props => (props.user  === "eunhye") ? "#C2E5D3" : "#ECECEC"};
     font-size: 16px;
-    display: flex;
-    justify-content: ${props => (props.user  === "eunhye") ? "end" : "start"};
   }
 `
 

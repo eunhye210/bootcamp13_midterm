@@ -24,9 +24,9 @@ const Container = styled.div`
     font-size: 30px;
   }
   .title {
+    margin-bottom: 50px;
     font-size: 30px;
     text-align: center;
-    margin-bottom: 50px;
   }
   .mid-section {
     height: 520px;
@@ -43,8 +43,8 @@ const Container = styled.div`
   .submit-button {
     width: 60px;
     height: 45px;
-    font-size: 20px;
     margin-left: 10px;
+    font-size: 20px;
   }
 `
 

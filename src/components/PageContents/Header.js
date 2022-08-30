@@ -5,16 +5,16 @@ const Container = styled.div`
   display: flex;
   justify-content: center;
   height: 100px;
+  margin-bottom: 10px;
   border-bottom: 2px solid;
   border-color: grey;
-  margin-bottom: 10px;
   .button {
-    margin-top: 25px;
     width: 300px;
     height: 50px;
-    background: white;
+    margin-top: 25px;
     border-color: lightgrey;
     border-radius: 5px;
+    background: white;
     font-size: 15px;
   }
 `
