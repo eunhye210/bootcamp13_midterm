@@ -2,8 +2,8 @@ export function getTodayDateAndTime() {
   const today = new Date();
   const year = today.getFullYear();
   const month = today.getMonth() + 1;
-  const day = today.getDay();
-  const todayDate = `${year}-${month}-${day}`;
+  const date = today.getDate();
+  const todayDate = `${year}-${month < 10 ? "0" + month : month}-${date < 10 ? "0" + date : date}`;
 
   const hours = today.getHours();
   const minutes = today.getMinutes();

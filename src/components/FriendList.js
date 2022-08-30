@@ -1,50 +1,90 @@
 import FriendListRow from "./ChatPageContents/FriendListRow";
 import styled from "styled-components";
 import Header from "../components/Header";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { useState } from "react";
+import { setChat } from "../store/sllices/chatSlice";
 
 const Container = styled.div`
-  .search {
-    margin-bottom: 10px;
+  .search-display {
+    display: flex;
+    justify-content: space-between;
   }
-  .rows {
+  .search {
+    width: 200px;
+    height: 20px;
+    margin-bottom: 10px;
+    margin-left: 20px;
+  }
+  .search-button {
+    height: 25px;
+    margin-left: 5px;
+  }
+  .select {
+    height: 25px;
+    margin-right: 20px;
   }
 `
 
 export default function FriendList({ setShowChatPage }) {
   const [name, setName] = useState("");
-  const [chats, setChats] = useState(useSelector(state => state.chat));
+  const [singleFriendInfoList, setSingleFriendInfoList] = useState("");
+  const chats = useSelector(state => state.chat);
+  const dispatch = useDispatch();
 
-  function searchByName() {
-    // 수정 필요 !
+  let allFriendsInfoList = [];
+  for (const [key, value] of Object.entries(chats)) {
+    allFriendsInfoList.push([key, value]);
   }
 
-  const friendInfoList = [];
-  for (const [key, value] of Object.entries(chats)) {
-    friendInfoList.push([key, value.img]);
+  function searchByName() {
+    setSingleFriendInfoList([name, chats[name]]);
+  }
+
+  function showAscOrDesc(e) {
+    const newChats = {};
+    const keys = Object.keys(chats).sort();
+    allFriendsInfoList = [];
+
+    if (e.target.value === "ascending") {
+      for (const key of keys) {
+        newChats[key] = chats[key];
+      }
+      dispatch(setChat(newChats));
+    } else {
+      keys.reverse();
+      for (const key of keys) {
+        newChats[key] = chats[key];
+      }
+      dispatch(setChat(newChats));
+    }
   }
 
   return (
     <Container>
-      <Header />
-      <div className="search">
-        <input
-          placeholder="친구 이름"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-        />
-        <button onClick={searchByName}>search</button>
+      <Header setName={setName} setSingleFriendInfoList={setSingleFriendInfoList}/>
+      <div className="search-display">
+        <div>
+          <input
+            className="search"
+            placeholder="친구 이름"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          />
+          <button className="search-button" onClick={searchByName}>search</button>
+        </div>
+        <select className="select" onChange={showAscOrDesc}>
+          <option value="">-- 정렬 기준 --</option>
+          <option value="ascending">오름차순</option>
+          <option value="descending">내림차순</option>
+        </select>
       </div>
-      <select>
-        <option value="">-- 정렬 기준 --</option>
-        <option value="ascending">오름차순</option>
-        <option value="descending">내림차순</option>
-      </select>
       <div className="rows">
-        {friendInfoList.map((info) =>
-          <FriendListRow key={info} info={info} setShowChatPage={setShowChatPage} />
-        )}
+        {singleFriendInfoList ?
+          <FriendListRow info={singleFriendInfoList} setShowChatPage={setShowChatPage} />
+          : allFriendsInfoList.map((info) =>
+          <FriendListRow key={info} info={info} setShowChatPage={setShowChatPage} />)
+        }
       </div>
     </Container>
   );

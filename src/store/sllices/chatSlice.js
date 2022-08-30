@@ -2,33 +2,25 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   "tom": {
-    img: "something",
-    messages: [
-      // {
-      // username: "tom",
-      // date: "2022-8-25",
-      // time: "19:00",
-      // message: "안녕하세요"
-      // },
-      // {
-      //   username: "tom",
-      //   date: "2022-8-25",
-      //   time: "19:10",
-      //   message: "안녕하세요 오늘 날씨가 너무너무너무너무너무너무너무너무너무너무너무 좋네요..."
-      // }
-    ],
+    img: null,
+    messages: [],
   },
   "emily": {
-    img: "something..",
-    messages: [
-      {
-        username: "emily",
-        date: "2022-8-27",
-        time: "15:00",
-        message: "hello"
-      }
-    ],
-  }
+    img: null,
+    messages: [],
+  },
+  "lauren": {
+    img: null,
+    messages: [],
+  },
+  "bob": {
+    img: null,
+    messages: [],
+  },
+  "james": {
+    img: null,
+    messages: [],
+  },
 };
 
 const chatSlice = createSlice({
@@ -36,12 +28,15 @@ const chatSlice = createSlice({
   initialState,
   reducers: {
     addChat(state, action) {
-      console.log("action");
-      // const messages = state[action.payload.name].messages;
-      // messages: action.payload.value;
+      const {name, value} = action.payload;
+      state[name].img = value.img;
+      state[name].messages = value.messages;
     },
+    setChat(state, action) {
+      return action.payload;
+    }
   },
 })
 
-export const { addChat } = chatSlice.actions;
+export const { addChat, setChat } = chatSlice.actions;
 export default chatSlice.reducer;

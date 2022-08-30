@@ -1,7 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 import chatReducer from "./sllices/chatSlice";
 import friendReducer from "./sllices/friendSlice";
-import logger from "redux-logger";
+// import logger from "redux-logger";
 import thunk from "redux-thunk";
 
 const reducer = {
@@ -11,7 +11,7 @@ const reducer = {
 
 const store = configureStore({
   reducer,
-  middleware: [logger, thunk],
+  middleware: [thunk],
 });
 
 export default store;
