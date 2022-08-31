@@ -2,7 +2,6 @@ import { useDispatch } from "react-redux";
 import { setFriendName } from "../../store/sllices/friendSlice";
 import { Container } from "./RowStyledComponents";
 
-
 export default function ChatListRow({ chat, setShowChatPage }) {
   const dispatch = useDispatch();
   const [name, personInfo] = chat;

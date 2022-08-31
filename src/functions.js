@@ -31,5 +31,6 @@ export function orderChatListByTimestamp(chats) {
   for (const date of dateList) {
     chatList.push([date[1], chats[date[1]]]);
   }
+
   return chatList;
 }

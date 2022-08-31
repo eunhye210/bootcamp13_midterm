@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import ChatInput from "../PageItemContents/ChatInput";
-import ChatPageRow from "../PageItemContents/ChatPageRow";
+import ChatInput from "../PageItemComponents/ChatInput";
+import ChatPageRow from "../PageItemComponents/ChatPageRow";
 import { useSelector } from "react-redux";
 import { BiUndo } from "react-icons/bi";
 

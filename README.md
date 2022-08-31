@@ -1,34 +1,57 @@
 # Chat App
 
-**React + React Router + Redux  Toolkit + Firebase**를 복합적으로 이용해 Chat App을 만들어 보는 과제입니다.
+**Firebase Realtime Database를 이용하여 실시간 채팅 기능이 구현된 앱입니다.**
 
-## Netlify 배포 주소
-[netlify_url](https://dreamy-figolla-0907fe.netlify.app)
+## Description
 
-## TODO
+### 1. `/friends` 친구 목록 페이지
 
-- [x] Firebase Realtime Database를 이용하여 실시간 채팅 기능이 구현되어야 합니다.
-- [x] 페이지 새로고침에 대한 대응은 하지 않아도 괜찮습니다.
+- 각 목록에는 친구 이름, 사진과 함께 채팅을 시작할 수 있는 버튼이 있습니다.
+- 검색창을 이용해 친구를 찾을 수 있습니다.
+- 이름을 기준으로 오름차순 또는 내림차순 정렬이 가능합니다.
+- 채팅 목록으로 이동할 수 있는 버튼이 있습니다.
 
-### 친구 목록 페이지
+### 2. `/chats` 채팅 목록 페이지
 
-- [x] 채팅 목록으로 이동할 수 있는 버튼이 있어야 합니다.
-- [x] 친구 이름, 사진과 함께 채팅을 시작할 수 있는 버튼이 있어야 합니다.
-- [x] "Chat" 버튼을 이용해 해당 친구와의 채팅 페이지로 바로 이동할 수 있습니다.
-- [x] 이름을 기준으로 오름차순 또는 내림차순 정렬할 수 있는 기능이 있어야 합니다.
-- [x] 검색창을 이용해 친구 이름을 기준으로 검색할 수 있는 기능이 있어야 합니다.
-- [x] 존재하지 않는 친구 이름을 검색할 경우, alert창이 떠야 합니다.
+- 최신 채팅 순으로 채팅 목록이 나열됩니다.
+- 각 목록에는 친구 이름, 가장 최신 메시지의 첫 30글자, 해당 전송 날짜가 나타납니다.
+- "Chat" 버튼을 누르면 채팅 페이지로 이동합니다.
+- 친구 목록으로 이동할 수 있는 버튼이 있습니다.
 
-### 채팅 목록 페이지
+### 3. 채팅 페이지
 
-- [x] 진행 중인 채팅이 날짜 순으로 나열되어야 합니다. (최신날짜가 상위)
-- [x] 친구 목록으로 이동할 수 있는 버튼이 있어야 합니다.
-- [x] 진행 중인 채팅의 친구 이름, 가장 최신 메시지의 첫 30글자, 가장 최신 메시지 전송 날짜가 표기되어야 합니다.
-- [x] "Chat" 버튼을 누르면 채팅 페이지로 이동합니다.
+- 상대방과 나눈 대화가 시간 순으로 나열됩니다.
+- 상대방 이름, 메시지 내용, 전송 날짜 및 시간이 나타납니다.
+- 채팅 페이지에서 전송된 메시지는, 채팅 페이지와 채팅 목록 페이지에 모두 반영됩니다.
 
-### 채팅 페이지
+## Getting Started
 
-- [x] 상대방과 나눈 대화가 시간 순(최근 메시지가 하위)으로 나열되어야 합니다.
-- [x] 상대방 이름, 메시지 내용, 전송 날짜 및 시간이 모두 표기되어야 합니다.
-- [x] 채팅 페이지는 별도 URL이 필요하지 않습니다.
-- [x] 채팅 페이지에서 메시지를 전송할 경우, 현재 채팅 페이지와 채팅 목록 페이지에 새로운 메시지가 반영되어야 합니다.
+### Installation
+
+```
+npm install
+```
+
+### Development
+
+```
+npm start
+# visit http://localhost:3000
+```
+
+### Built With
+
+- React 18.2.0
+- React-Router-Dom 6.3.0
+- Redux-Toolkit 1.8.5
+- Firebase 9.9.3
+
+### Prerequisites
+
+- [redux-thunk](https://www.npmjs.com/package/redux-thunk)
+- [react-icons](https://react-icons.github.io/react-icons)
+- [styled-components](https://styled-components.com/)
+
+## Chat App URL
+
+[ChatApp_url](https://graceful-daffodil-fc6db8.netlify.app/)

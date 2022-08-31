@@ -1,4 +1,4 @@
-import ChatListRow from "../PageItemContents/ChatListRow";
+import ChatListRow from "../PageItemComponents/ChatListRow";
 import { useSelector } from "react-redux";
 import { orderChatListByTimestamp } from "../../functions";
 
@@ -9,7 +9,7 @@ export default function ChatList({ setShowChatPage }) {
   return (
     <div>
       {orderedChatList.map((chat) =>
-          <ChatListRow key={chat[0]} chat={chat} setShowChatPage={setShowChatPage} />
+        <ChatListRow key={chat[0]} chat={chat} setShowChatPage={setShowChatPage} />
       )}
     </div>
   );

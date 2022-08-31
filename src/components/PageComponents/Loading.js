@@ -9,7 +9,7 @@ const Wrapper = styled.div`
 export default function Loading() {
   return (
     <Wrapper>
-      Welcome to Chap App !
+      Welcome to Chat App !
     </Wrapper>
   );
 }

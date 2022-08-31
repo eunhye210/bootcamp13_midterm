@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useSelector } from "react-redux";
 
-export default function SearchInput({ onSubmit, setSingleFriendInfo }) {
+export default function SearchInput({ setSingleFriendInfo }) {
   const [userName, setUserName] = useState("");
   const chats = useSelector(state => state.chat);
 
@@ -9,9 +9,9 @@ export default function SearchInput({ onSubmit, setSingleFriendInfo }) {
     e.preventDefault();
 
     if (chats[userName]) {
-      onSubmit(userName);
       setSingleFriendInfo([userName, chats[userName]]);
     } else {
+      setUserName("");
       alert(`${userName} 이름을 가진 친구가 없습니다.`);
     }
   }

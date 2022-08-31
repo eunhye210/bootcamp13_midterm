@@ -1,8 +1,8 @@
 import styled from "styled-components";
 import { useSelector, useDispatch } from "react-redux";
 import { setChat } from "../../store/sllices/chatSlice";
-import SearchInput from "../PageItemContents/SearchInput";
-import FriendListRow from "../PageItemContents/FriendListRow";
+import SearchInput from "../PageItemComponents/SearchInput";
+import FriendListRow from "../PageItemComponents/FriendListRow";
 
 const Container = styled.div`
   .search-display {
@@ -28,7 +28,6 @@ const Container = styled.div`
 `
 
 export default function FriendList({
-  onSubmit,
   setShowChatPage,
   singleFriendInfo,
   setSingleFriendInfo,
@@ -50,23 +49,19 @@ export default function FriendList({
       for (const key of keys) {
         newChats[key] = chats[key];
       }
-      dispatch(setChat(newChats));
     } else {
       keys.reverse();
       for (const key of keys) {
         newChats[key] = chats[key];
       }
-      dispatch(setChat(newChats));
     }
+    dispatch(setChat(newChats));
   }
 
   return (
     <Container>
       <div className="search-display">
-        <SearchInput
-          onSubmit={onSubmit}
-          setSingleFriendInfo={setSingleFriendInfo}
-        />
+        <SearchInput setSingleFriendInfo={setSingleFriendInfo} />
         <select className="select" onChange={showAscOrDesc}>
           <option value="">-- 정렬 기준 --</option>
           <option value="ascending">오름차순</option>
