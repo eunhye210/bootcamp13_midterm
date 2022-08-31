@@ -1,10 +1,7 @@
 import styled from "styled-components";
+import ChatInput from "../PageItemContents/ChatInput";
 import ChatPageRow from "../PageItemContents/ChatPageRow";
 import { useSelector } from "react-redux";
-import { useState } from "react";
-import { ref, set } from "firebase/database";
-import { db } from "../../firebase";
-import { getTodayDateAndTime } from "../../functions"
 import { BiUndo } from "react-icons/bi";
 
 const Container = styled.div`
@@ -50,23 +47,6 @@ const Container = styled.div`
 
 export default function ChatPage({ setShowChatPage }) {
   const { friend, chat } = useSelector(state => state);
-  const [messageInput, setMessageInput] = useState("");
-
-  function sendMessage(e) {
-    e.preventDefault();
-
-    const [todayDate, todayTime] = getTodayDateAndTime();
-    const postData = {
-      username: "eunhye",
-      message: messageInput,
-      date: todayDate,
-      time: todayTime,
-    };
-
-    const numberKey = chat[friend.value].messages.length;
-    set(ref(db, `chatting/${friend.value}/messages/${numberKey}`), postData);
-    setMessageInput("");
-  }
 
   return (
     <Container>
@@ -86,18 +66,7 @@ export default function ChatPage({ setShowChatPage }) {
         )}
       </div>
       <div className="submit-section">
-        <input
-          className="submit-input"
-          value={messageInput}
-          onChange={(e) => setMessageInput(e.target.value)}
-        />
-        <button
-          className="submit-button"
-          onClick={(e) => sendMessage(e)}
-          disabled={!messageInput}
-        >
-          send
-        </button>
+        <ChatInput />
       </div>
     </Container>
   );

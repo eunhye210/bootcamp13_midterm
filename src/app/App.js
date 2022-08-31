@@ -57,8 +57,7 @@ function App() {
             <Route path="/" element={<Loading />} />
             <Route path="/friends" element={
               <FriendList
-                name={name}
-                setName={setName}
+                onSubmit={value => setName(value)}
                 setShowChatPage={setShowChatPage}
                 singleFriendInfo={singleFriendInfo}
                 setSingleFriendInfo={setSingleFriendInfo}

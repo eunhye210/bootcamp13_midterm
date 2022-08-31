@@ -1,7 +1,8 @@
-import FriendListRow from "../PageItemContents/FriendListRow";
 import styled from "styled-components";
 import { useSelector, useDispatch } from "react-redux";
 import { setChat } from "../../store/sllices/chatSlice";
+import SearchInput from "../PageItemContents/SearchInput";
+import FriendListRow from "../PageItemContents/FriendListRow";
 
 const Container = styled.div`
   .search-display {
@@ -27,27 +28,17 @@ const Container = styled.div`
 `
 
 export default function FriendList({
-    name,
-    setName,
-    setShowChatPage,
-    singleFriendInfo,
-    setSingleFriendInfo,
-  }) {
+  onSubmit,
+  setShowChatPage,
+  singleFriendInfo,
+  setSingleFriendInfo,
+}) {
   const dispatch = useDispatch();
   const chats = useSelector(state => state.chat);
 
   let everyFriendInfoList = [];
   for (const [key, value] of Object.entries(chats)) {
     everyFriendInfoList.push([key, value]);
-  }
-
-  function searchByName() {
-    if (chats[name]) {
-      setSingleFriendInfo([name, chats[name]]);
-    } else {
-      alert(`${name} 이름을 가진 친구가 없습니다.`);
-      setName("");
-    }
   }
 
   function showAscOrDesc(e) {
@@ -72,15 +63,10 @@ export default function FriendList({
   return (
     <Container>
       <div className="search-display">
-        <div>
-          <input
-            className="search"
-            placeholder="친구 이름"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-          />
-          <button className="search-button" onClick={searchByName}>search</button>
-        </div>
+        <SearchInput
+          onSubmit={onSubmit}
+          setSingleFriendInfo={setSingleFriendInfo}
+        />
         <select className="select" onChange={showAscOrDesc}>
           <option value="">-- 정렬 기준 --</option>
           <option value="ascending">오름차순</option>
