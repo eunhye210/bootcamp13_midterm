@@ -52,18 +52,6 @@ npm start
 - [react-icons](https://react-icons.github.io/react-icons)
 - [styled-components](https://styled-components.com/)
 
-### Firebase Configuration
-
-```
-REACT_APP_FIREBASECONFIG_APIKEY=AIzaSyDhlHs2I-zV_cKU5nc3yV3fgq0ZS52a4bs
-REACT_APP_FIREBASECONFIG_AUTHDOMAIN=bootcamp13-midterm.firebaseapp.com
-REACT_APP_FIREBASECONFIG_PROJECTID=bootcamp13-midterm
-REACT_APP_FIREBASECONFIG_STORAGEBUCKET=bootcamp13-midterm.appspot.com
-REACT_APP_FIREBASECONFIG_MESSAGINGSENDERID=218748169096
-REACT_APP_FIREBASECONFIG_APPID=1:218748169096:web:8bd6697572d5ee7be5a83d
-REACT_APP_FIREBASECONFIG_MEASUREMENTID=G-23G5NDP3QE
-REACT_APP_FIREBASECONFIG_DATABASEURL=https://bootcamp13-midterm-default-rtdb.firebaseio.com
-```
 
 ## Chat App URL
 
